@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+</head>
+
+<body>
+    <div id="game">
+        <h1> The Psychic Game</h1>
+        <h1>Guess What Letter I'm Thinking Of</h1>
+        <h1>Wins<span id="Wins"> 0 </span></h1>
+        <h1>Losses<span id="Losses"> 0 </span></h1>
+        <h1>Guesses Left<span id="Guesses Left"> 0 </span></h1>
+        <h1>Your Guesses So Far<span id="Your Guesses So Far"> 0 </span></h1>
+    </div>
+    <script type="text/javascript">
+        //Array of options
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+        //variables for wins, losses, and guesses    
+        var Wins = 0;
+        var Losses = 0;
+        var GuessesLeft = 9;
+        var LettersGuessed = [];
+
+        //variable for each html element to update their text
+        var $wins = document.getElementById("wins");
+        var $losses = document.getElementById("losses");
+        var $GuessesLeft = document.getElementById("GuessesLeft");
+        var $YourGuessesSoFar = document.getElementById("Your Guesses So Far");
+
+        document.onkeyup = function (event) {
+            //which key is pressed by the user
+            var userChoice = event.key;
+            //random choices; computer guesses; options array
+            var computerGuess = computerChoices[mathfloor(math.Random() * computerChoices.length)];
+            //the logic that determins the outcome of the game
+            if (options.indexOf(userChoice) > -1) {
+
+                if (userChoice === computerGuess) {
+                    wins++;
+                    GuessesLeft = 9;
+                    LettersGuessed = [];
+                }
+                if (userChoice != computerGuess) {
+                    GuessesLeft--;
+                    LettersGuessed.push(userChoice);
+                }
+                if (GuessesLeft === 0) {
+                    GuessesLeft = 9;
+                    losses++;
+                    LettersGuessed = [];
+                }
+            
+
+    //Display the user guesses; wins/losses counts    
+        directionsText.textContent = "";
+        Winstext.textContent = "wins: " + Wins;
+        Lossestext.textContent = "losses: " + Losses;
+        GuessesLeft.textContent = "Guesses Left: " + GuessesLeft;
+        YourGuessesSoFartext.textContent = "Your Guesses So Far: " + YourGuessesSoFartext;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
